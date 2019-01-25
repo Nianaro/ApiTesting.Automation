@@ -1,15 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using RestSharp;
+using ApiTesting.Models;
 
 namespace ApiTesting
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
+            var client = new RestClient("https://api.github.com");
+            var request = new RestRequest("users/Mak0/followers");
+            var user = client.Get<List<User>>(request).Data;
         }
     }
 }
